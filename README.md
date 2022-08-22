@@ -1,6 +1,6 @@
 # MiTuri
 
-MiTuri es un proyecto académico correspondiente correspondiente a la asignatura de Ingeniería de software.
+MiTuri es un proyecto académico correspondiente a la asignatura de Ingeniería de software.
 
 ## Integrantes
 
