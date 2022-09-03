@@ -3,6 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.332" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_google_icon_icons_com_66793.xml" value="0.342" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_happy_svgrepo_com.xml" value="0.342" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_imagelogin.xml" value="0.3455" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_imageregister.xml" value="0.3455" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_launcher_background.xml" value="0.332" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/search_bg.xml" value="0.342" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2215528781793842" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout-w936dp/activity_login.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout-w936dp/pop_up.xml" value="0.12" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_login.xml" value="0.288671875" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_pop_u.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_pop_up.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/fragment_ad_mob.xml" value="0.248046875" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/fragment_main.xml" value="0.248046875" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/fragment_pop_up.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/pop_up.xml" value="0.2578125" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/popup.xml" value="0.25859375" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.343" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
       </map>
     </option>
