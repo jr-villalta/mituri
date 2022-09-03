@@ -8,6 +8,9 @@ public class Usuario {
     private String Correo;
     private int Tipo_Usuario;
 
+    public Usuario() {
+    }
+
     public Usuario(int IDUsuario, String nombre, String apellido, String correo, int tipo_Usuario) {
         this.IDUsuario = IDUsuario;
         Nombre = nombre;
