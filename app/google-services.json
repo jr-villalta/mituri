@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814335220658",
+    "project_id": "mituri-4793b",
+    "storage_bucket": "mituri-4793b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814335220658:android:51c3844b7e8e413fc922ab",
+        "android_client_info": {
+          "package_name": "com.example.mituri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814335220658-sl07rfpb1oqgu0pj4k1soi6bgfjrm2qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZHY3FEelcCV7ew3Gk3i4MbizJoXJUoFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814335220658-sl07rfpb1oqgu0pj4k1soi6bgfjrm2qv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
