@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:contentDescription="@string/searchbar"
     android:labelFor="@id/SearchBar"
     tools:context=".Home">
 
@@ -29,13 +28,13 @@
             android:verticalScrollbarPosition="left" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewUsuario"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="7dp"
             android:layout_weight="1"
             android:paddingTop="14dp"
-            android:text="@string/textviewporfilename"
+            android:text="Guest"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -52,15 +51,14 @@
         android:drawableStart="?android:attr/actionModeWebSearchDrawable"
         android:drawablePadding="5dp"
         android:ems="10"
-        android:hint="@string/searchbar"
-        android:imeActionLabel="@string/searchbar"
+        android:hint="Search here..."
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:textColor="@color/color5"
+        android:textColor="@color/color4"
         android:textColorHighlight="@color/color1"
-        android:textColorHint="@color/color5"
+        android:textColorHint="@color/color4"
         android:textColorLink="@color/color4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
