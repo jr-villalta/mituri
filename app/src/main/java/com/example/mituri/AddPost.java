@@ -1,27 +1,34 @@
 package com.example.mituri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
+import com.bumptech.glide.Glide;
 import com.example.mituri.Clases.SitioTuristico;
 import com.example.mituri.Clases.Usuario;
 import com.example.mituri.Modelo.ModPaises;
 import com.example.mituri.Modelo.ModRegiones;
 import com.example.mituri.Modelo.ServiceAPI;
 import com.example.mituri.ServiceUtils.ApiDireccion;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +62,7 @@ public class AddPost extends AppCompatActivity {
     private Spinner Sp_Pais, Sp_Region;
 
     private Usuario usuario = new Usuario();
+    public Uri UrlImage;
     private String Pais;
     private String Region;
     private String Code;
@@ -66,7 +75,6 @@ public class AddPost extends AppCompatActivity {
     private ArrayList<String> ListaRegiones = new ArrayList<String>();
 
     private Button btnGPS, btnGuardar;
-
     private String Foto = MainActivity.Foto_NuevoBlog;
 
     @Override
@@ -143,7 +151,23 @@ public class AddPost extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Guardar();
+
+                if (!Pais.equals("Seleccione un Pais") && !Region.equals("Seleccione una Region")){
+                    //VALIDA QUE LOS CAMPOS NO ESTEN VACIOS
+                    if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
+                            !TxtDescripcion.getText().toString().isEmpty()) {
+                        if (UrlImage != null) {
+                            GuardarImagen();
+                        } else {
+                            Guardar();
+                        }
+                    }else{
+                        Toast.makeText(AddPost.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(AddPost.this, "Seleccione un pais y una region", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -175,6 +199,7 @@ public class AddPost extends AppCompatActivity {
                 if (snapshot.exists()) {
                     //ASIGNA EL TAMAÑO DEL CONTENIDO
                     NuevoID = (snapshot.getChildrenCount());
+                    Log.d("Respuesta", " "+NuevoID);
                 }
             }
 
@@ -184,6 +209,20 @@ public class AddPost extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void CargarFoto(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/");
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            UrlImage = data.getData();
+        }
     }
 
     public void CargarPaises(){
@@ -298,37 +337,48 @@ public class AddPost extends AppCompatActivity {
 
     }
 
+    public void GuardarImagen(){
+        //SE CREA OBJETO, SE INDIA DONDE SE GUARDARA
+        StorageReference file = Storareference.child("SitiosTuristicos").child(UrlImage.getLastPathSegment());
+        //SE AGREGA LA URL DE LA IMAGEN
+        UploadTask subir = file.putFile(UrlImage);
+
+        Task<Uri> uriTask = subir.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()){
+                    throw task.getException();
+                }
+                return file.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                Uri URLDescarga = task.getResult();
+                Foto = URLDescarga.toString();
+                Guardar();
+                Toast.makeText(AddPost.this, "Imagen Guardada", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     public void Guardar(){
 
-        if (Pais != "Seleccione un Pais" && Region != "Seleccione una Region"){
-            //VALIDA QUE LOS CAMPOS NO ESTEN VACIOS
-            if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
-                    !TxtDescripcion.getText().toString().isEmpty()){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference =database.getReference(MainActivity.TBL_SitioTuristico);
 
-                //GuardarImagen();
+        SitioTuristico Sitio = new SitioTuristico();
+        Sitio.setIDBlog((int) NuevoID);
+        Sitio.setNombre(TxtNombre.getText().toString());
+        Sitio.setPais(Pais);
+        Sitio.setRegion(Region);
+        Sitio.setCoordenadas(tvUbication.getText().toString());
+        Sitio.setDescripcion(TxtDescripcion.getText().toString());
+        Sitio.setFoto(Foto);
+        Sitio.setUsuario(usuario);
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference reference =database.getReference(MainActivity.TBL_SitioTuristico);
-
-                SitioTuristico Sitio = new SitioTuristico();
-                Sitio.setIDBlog((int) NuevoID);
-                Sitio.setNombre(TxtNombre.getText().toString());
-                Sitio.setPais(Pais);
-                Sitio.setRegion(Region);
-                Sitio.setCoordenadas(tvUbication.getText().toString());
-                Sitio.setDescripcion(TxtDescripcion.getText().toString());
-                Sitio.setFoto(Foto);
-                Sitio.setUsuario(usuario);
-
-                reference.child(String.valueOf(NuevoID)).setValue(Sitio);
-                Toast.makeText(this, "Se Agrego Correctamente", Toast.LENGTH_LONG).show();
-
-            }else{
-                Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_LONG).show();
-            }
-        }else{
-            Toast.makeText(this, "Seleccione un pais y una region", Toast.LENGTH_LONG).show();
-        }
+        reference.child(String.valueOf(NuevoID)).setValue(Sitio);
+        Toast.makeText(this, "Se Agrego Correctamente", Toast.LENGTH_LONG).show();
 
     }
 

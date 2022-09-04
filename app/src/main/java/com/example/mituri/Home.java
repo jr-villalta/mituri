@@ -44,15 +44,6 @@ public class Home extends AppCompatActivity {
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
 
-    private int IDBlog;
-    private String Nombre;
-    private String Pais;
-    private String Region;
-    private String Coordenadas;
-    private String Descripcion;
-    private String Foto;
-    private Usuario Usuario;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

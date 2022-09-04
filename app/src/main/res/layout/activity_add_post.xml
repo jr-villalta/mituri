@@ -72,7 +72,8 @@
             app:icon="@android:drawable/ic_menu_gallery"
             app:iconGravity="start"
             app:iconPadding="1dp"
-            app:iconTint="@color/black" />
+            app:iconTint="@color/black"
+            android:onClick="CargarFoto"/>
 
         <LinearLayout
             android:layout_width="290dp"
