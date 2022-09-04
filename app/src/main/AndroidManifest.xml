@@ -20,6 +20,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MasInformacion_MisSitiosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MasInformacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".MisSitiosActivity"
             android:exported="false" />
         <activity

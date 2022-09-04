@@ -55,7 +55,7 @@ public class MisSitiosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent intent = new Intent(getApplicationContext(), Home.class);
+                Intent intent = new Intent(getApplicationContext(), MasInformacion_MisSitiosActivity.class);
                 intent.putExtra("IDBlog", ListSitio.get(i).getIDBlog());
                 intent.putExtra("Nombre", ListSitio.get(i).getNombre());
                 intent.putExtra("Pais", ListSitio.get(i).getPais());
@@ -65,7 +65,6 @@ public class MisSitiosActivity extends AppCompatActivity {
                 intent.putExtra("Foto", ListSitio.get(i).getFoto());
                 startActivity(intent);
 
-                Toast.makeText(MisSitiosActivity.this, "Datos almacenados"+ListSitio.get(i).getNombre(), Toast.LENGTH_LONG).show();
             }
         });
 
