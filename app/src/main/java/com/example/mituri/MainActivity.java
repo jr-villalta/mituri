@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnlogout.setOnClickListener(view ->{
             mAuth.signOut();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, Home.class));
         });
 
         btnAdd.setOnClickListener(view -> {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, Home.class));
         }
     }
 
