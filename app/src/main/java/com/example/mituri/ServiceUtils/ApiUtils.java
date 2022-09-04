@@ -11,7 +11,6 @@ public class ApiUtils {
     private static Retrofit retrofitRegion = null;
 
     static Retrofit getPais(String urlBase){
-        Log.d("Respuesta","getPais");
         if (retrofitPais==null){
             retrofitPais = new Retrofit.Builder()
                     .baseUrl(urlBase)
@@ -21,7 +20,6 @@ public class ApiUtils {
     }
 
     static Retrofit getRegion(String urlBase){
-        Log.d("Respuesta","getRegion");
         if (retrofitRegion==null){
             retrofitRegion = new Retrofit.Builder()
                     .baseUrl(urlBase)

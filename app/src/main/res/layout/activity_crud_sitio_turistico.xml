@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPost">
+    tools:context=".CRUD_SitioTuristico">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,52 +75,30 @@
             app:iconTint="@color/black" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtPais"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:foregroundGravity="center"
-                    android:hint="Pais"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtRegion"
-                    android:layout_width="140dp"
+                <Spinner
+                    android:id="@+id/SpCrearPais"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:foregroundGravity="center"
-                    android:gravity="start"
-                    android:hint="Region"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_weight="1" />
 
-
+                <Spinner
+                    android:id="@+id/SpCrearRegion"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -163,7 +141,7 @@
             android:layout_gravity="center"
             android:layout_margin="50dp"
             android:backgroundTint="@color/color2"
-            android:text="Agregar"
+            android:text="Guardar"
             android:textColor="@color/black" />
 
 
