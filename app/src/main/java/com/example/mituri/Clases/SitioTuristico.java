@@ -2,7 +2,7 @@ package com.example.mituri.Clases;
 
 public class SitioTuristico {
 
-    private int IDBlog;
+    private String IDBlog;
     private String Nombre;
     private String Pais;
     private String Region;
@@ -15,7 +15,7 @@ public class SitioTuristico {
 
     }
 
-    public SitioTuristico(int IDBlog, String nombre, String pais, String region, String coordenadas,
+    public SitioTuristico(String IDBlog, String nombre, String pais, String region, String coordenadas,
                           String descripcion, String foto, com.example.mituri.Clases.Usuario usuario) {
         this.IDBlog = IDBlog;
         Nombre = nombre;
@@ -27,11 +27,11 @@ public class SitioTuristico {
         Usuario = usuario;
     }
 
-    public int getIDBlog() {
+    public String getIDBlog() {
         return IDBlog;
     }
 
-    public void setIDBlog(int IDBlog) {
+    public void setIDBlog(String IDBlog) {
         this.IDBlog = IDBlog;
     }
 

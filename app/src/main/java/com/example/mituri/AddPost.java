@@ -42,6 +42,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,7 +67,9 @@ public class AddPost extends AppCompatActivity {
     private String Pais;
     private String Region;
     private String Code;
-    private long NuevoID = 0;
+    private String NuevoID;
+    private boolean AuxiliarGuardar = true;
+
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
 
@@ -76,6 +79,8 @@ public class AddPost extends AppCompatActivity {
 
     private Button btnGPS, btnGuardar;
     private String Foto = MainActivity.Foto_NuevoBlog;
+
+    private ArrayList<SitioTuristico> ListVerificarSitio = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +108,6 @@ public class AddPost extends AppCompatActivity {
 
         Datareference.child(MainActivity.TBL_Usuarios).child(currentUser.getUid()).addValueEventListener(getUsuario);
 
-        NuevoID();
         CargarPaises();
         Permisos();
 
@@ -112,7 +116,7 @@ public class AddPost extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //SE ASIGNA EL VALOR A LA VARIABLE SEGUN LA POSICION
-                if (ListaPaises.get(i) != "Seleccione un Pais"){
+                if (!Objects.equals(ListaPaises.get(i), "Seleccione un Pais")){
                     Pais = ListaPaises.get(i);
                     Code = ListaCodePaises.get(i);
                 }
@@ -130,7 +134,7 @@ public class AddPost extends AppCompatActivity {
         Sp_Region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (ListaRegiones.get(i) != "Seleccione una Region"){
+                if (!Objects.equals(ListaRegiones.get(i), "Seleccione una Region")){
                     Region = ListaRegiones.get(i);
                 }
             }
@@ -156,11 +160,9 @@ public class AddPost extends AppCompatActivity {
                     //VALIDA QUE LOS CAMPOS NO ESTEN VACIOS
                     if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
                             !TxtDescripcion.getText().toString().isEmpty()) {
-                        if (UrlImage != null) {
-                            GuardarImagen();
-                        } else {
-                            Guardar();
-                        }
+
+                        Datareference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(getSitios);
+
                     }else{
                         Toast.makeText(AddPost.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
                     }
@@ -188,28 +190,39 @@ public class AddPost extends AppCompatActivity {
         }
     };
 
-    public void NuevoID(){
+    public ValueEventListener getSitios = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            if(snapshot.exists()){
+                ListVerificarSitio.clear();
+                for (DataSnapshot items : snapshot.getChildren()) {
+                    SitioTuristico Sitio = items.getValue(SitioTuristico.class);
 
-        //PROCESO PARA ASIGNAR EL NUEVO ID
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(MainActivity.TBL_SitioTuristico);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //VERIFICA SI EXISTE
-                if (snapshot.exists()) {
-                    //ASIGNA EL TAMAÑO DEL CONTENIDO
-                    NuevoID = (snapshot.getChildrenCount());
-                    Log.d("Respuesta", " "+NuevoID);
+                    assert Sitio != null;
+                    if (TxtNombre.getText().toString().equals(Sitio.getNombre())){
+                        Toast.makeText(AddPost.this, "Sitio ya existe", Toast.LENGTH_LONG).show();
+                        AuxiliarGuardar = false;
+                        break;
+                    }
+
                 }
+
+                if (AuxiliarGuardar){
+                    if (UrlImage != null) {
+                        GuardarImagen();
+                    } else {
+                        Guardar();
+                    }
+                }
+
             }
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-    }
+        }
+    };
 
     public void CargarFoto(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -367,8 +380,10 @@ public class AddPost extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference =database.getReference(MainActivity.TBL_SitioTuristico);
 
+        NuevoID = usuario.getIDUsuario()+TxtNombre.getText().toString();
+
         SitioTuristico Sitio = new SitioTuristico();
-        Sitio.setIDBlog((int) NuevoID);
+        Sitio.setIDBlog(NuevoID);
         Sitio.setNombre(TxtNombre.getText().toString());
         Sitio.setPais(Pais);
         Sitio.setRegion(Region);
@@ -379,6 +394,8 @@ public class AddPost extends AppCompatActivity {
 
         reference.child(String.valueOf(NuevoID)).setValue(Sitio);
         Toast.makeText(this, "Se Agrego Correctamente", Toast.LENGTH_LONG).show();
+
+        startActivity(new Intent(AddPost.this, Home.class));
 
     }
 
