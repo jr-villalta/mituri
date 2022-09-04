@@ -33,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Home.class));
         });
 
-        btnAdd.setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this, CRUD_SitioTuristico.class));
-        });
+        startActivity(new Intent(MainActivity.this, Home.class));
 
     }
 
