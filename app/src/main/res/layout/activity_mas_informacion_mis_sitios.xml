@@ -90,14 +90,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Eliminar" />
+                android:text="Eliminar"
+                android:layout_marginRight="5sp"
+                android:layout_marginLeft="5sp"
+                />
 
             <Button
                 android:id="@+id/BtnEditar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Editar" />
+                android:text="Editar"
+                android:layout_marginRight="5sp"
+                android:layout_marginLeft="5sp"
+                />
         </LinearLayout>
     </LinearLayout>
 
