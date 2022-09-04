@@ -41,6 +41,7 @@ public class Home extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
+
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
 
@@ -183,4 +184,5 @@ public class Home extends AppCompatActivity {
     public void Agregar(View view){
         startActivity(new Intent(Home.this, AddPost.class));
     }
+    public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
 }

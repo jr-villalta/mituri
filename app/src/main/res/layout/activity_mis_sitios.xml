@@ -2,12 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/SearchBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:labelFor="@id/SearchBar"
-    tools:context=".Home">
+    tools:context=".MisSitiosActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -117,10 +115,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
-            android:contentDescription="misSitios"
-            app:srcCompat="@drawable/ic_listamissitios"
+            android:contentDescription="home"
+            app:srcCompat="@drawable/ic_icons8_home"
             tools:ignore="SpeakableTextPresentCheck"
-            android:onClick="MiSitios"/>
+            android:onClick="Home"/>
 
         <ImageButton
             android:id="@+id/porfilesettingsbtn"
