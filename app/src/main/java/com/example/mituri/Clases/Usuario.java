@@ -2,7 +2,7 @@ package com.example.mituri.Clases;
 
 public class Usuario {
 
-    private int IDUsuario;
+    private String IDUsuario;
     private String Nombre;
     private String Apellido;
     private String Correo;
@@ -11,7 +11,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int IDUsuario, String nombre, String apellido, String correo, int tipo_Usuario) {
+    public Usuario(String IDUsuario, String nombre, String apellido, String correo, int tipo_Usuario) {
         this.IDUsuario = IDUsuario;
         Nombre = nombre;
         Apellido = apellido;
@@ -19,11 +19,11 @@ public class Usuario {
         Tipo_Usuario = tipo_Usuario;
     }
 
-    public int getIDUsuario() {
+    public String getIDUsuario() {
         return IDUsuario;
     }
 
-    public void setIDUsuario(int IDUsuario) {
+    public void setIDUsuario(String IDUsuario) {
         this.IDUsuario = IDUsuario;
     }
 
