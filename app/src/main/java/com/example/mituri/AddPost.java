@@ -59,7 +59,6 @@ public class AddPost extends AppCompatActivity {
 
     private TextView tvUbication;
     private EditText TxtNombre, TxtDescripcion;
-    private ImageView Img;
     private Spinner Sp_Pais, Sp_Region;
 
     private Usuario usuario = new Usuario();
@@ -68,7 +67,7 @@ public class AddPost extends AppCompatActivity {
     private String Region;
     private String Code;
     private String NuevoID;
-    private boolean AuxiliarGuardar = true;
+    private boolean AuxiliarGuardar;
 
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
@@ -116,7 +115,7 @@ public class AddPost extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //SE ASIGNA EL VALOR A LA VARIABLE SEGUN LA POSICION
-                if (!Objects.equals(ListaPaises.get(i), "Seleccione un Pais")){
+                if (!ListaPaises.get(i).equals(ListaPaises.get(0))){
                     Pais = ListaPaises.get(i);
                     Code = ListaCodePaises.get(i);
                 }
@@ -134,7 +133,7 @@ public class AddPost extends AppCompatActivity {
         Sp_Region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (!Objects.equals(ListaRegiones.get(i), "Seleccione una Region")){
+                if (!ListaRegiones.get(i).equals(ListaRegiones.get(0))){
                     Region = ListaRegiones.get(i);
                 }
             }
@@ -156,18 +155,24 @@ public class AddPost extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (!Pais.equals("Seleccione un Pais") && !Region.equals("Seleccione una Region")){
-                    //VALIDA QUE LOS CAMPOS NO ESTEN VACIOS
-                    if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
-                            !TxtDescripcion.getText().toString().isEmpty()) {
+                AuxiliarGuardar = true;
 
-                        Datareference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(getSitios);
+                if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
+                        !TxtDescripcion.getText().toString().isEmpty()) {
 
+                    if (Pais != null && Region != null){
+                        if (!tvUbication.getText().toString().equals("Tus Coordenadas")){
+
+                            Datareference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(getSitios);
+
+                        }else{
+                            Toast.makeText(AddPost.this, "Se debe colocar unas Coordenadas", Toast.LENGTH_LONG).show();
+                        }
                     }else{
-                        Toast.makeText(AddPost.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddPost.this, "Seleccione un Pais y una Region", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(AddPost.this, "Seleccione un pais y una region", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddPost.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -370,7 +375,6 @@ public class AddPost extends AppCompatActivity {
                 Uri URLDescarga = task.getResult();
                 Foto = URLDescarga.toString();
                 Guardar();
-                Toast.makeText(AddPost.this, "Imagen Guardada", Toast.LENGTH_LONG).show();
             }
         });
     }
