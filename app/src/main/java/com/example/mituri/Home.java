@@ -41,6 +41,7 @@ public class Home extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
+
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
 
@@ -124,8 +125,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //Obtiene los datos del seleccionado
-                Intent intent = new Intent(getApplicationContext(), Home.class);
+                Intent intent = new Intent(getApplicationContext(), MasInformacionActivity.class);
                 intent.putExtra("IDBlog", ListSitio.get(i).getIDBlog());
                 intent.putExtra("Nombre", ListSitio.get(i).getNombre());
                 intent.putExtra("Pais", ListSitio.get(i).getPais());
@@ -133,9 +133,8 @@ public class Home extends AppCompatActivity {
                 intent.putExtra("Coordenadas", ListSitio.get(i).getCoordenadas());
                 intent.putExtra("Descripcion", ListSitio.get(i).getDescripcion());
                 intent.putExtra("Foto", ListSitio.get(i).getFoto());
+                startActivity(intent);
 
-                //startActivity(intent);
-                Toast.makeText(Home.this, "Datos almacenados"+ListSitio.get(i).getNombre(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -183,4 +182,5 @@ public class Home extends AppCompatActivity {
     public void Agregar(View view){
         startActivity(new Intent(Home.this, AddPost.class));
     }
+    public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
 }
