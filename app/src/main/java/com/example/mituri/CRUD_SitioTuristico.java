@@ -161,7 +161,6 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
             if(snapshot.exists()){
                 usuario = snapshot.getValue(Usuario.class);
                 usuario.setIDUsuario(currentUser.getUid());
-                Log.d("respuesta"," "+usuario.getIDUsuario());
             }
         }
 
