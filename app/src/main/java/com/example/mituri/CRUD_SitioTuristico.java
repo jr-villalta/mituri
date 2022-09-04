@@ -160,6 +160,8 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
         public void onDataChange(@NonNull DataSnapshot snapshot) {
             if(snapshot.exists()){
                 usuario = snapshot.getValue(Usuario.class);
+                usuario.setIDUsuario(currentUser.getUid());
+                Log.d("respuesta"," "+usuario.getIDUsuario());
             }
         }
 
