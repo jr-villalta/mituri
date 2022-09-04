@@ -66,40 +66,41 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/slider"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:layout_marginTop="8dp"
+    <LinearLayout
+        android:layout_width="405dp"
+        android:layout_height="428dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Latest" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchBarInput">
 
-    <TextView
-        android:id="@+id/Latest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Latest"
-        android:textColor="@color/black"
-        android:textColorLink="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchBarInput" />
+        <TextView
+            android:id="@+id/Latest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Latest"
+            android:textColor="@color/black"
+            android:textColorLink="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider" />
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="134dp"
+            android:layout_marginTop="8dp" />
+
+        <ListView
+            android:id="@+id/ListSitios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -138,7 +139,8 @@
             android:backgroundTint="@color/white"
             android:contentDescription="addplace"
             app:srcCompat="@drawable/ic_icons8_plus"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:onClick="Agregar"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
