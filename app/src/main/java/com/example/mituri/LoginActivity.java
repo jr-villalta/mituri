@@ -50,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         btnRecuperar.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, RegistrarActivity.class));
         });
+        btnRecuperar.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, RecoveryActivity.class));
+        });
     }
 
     private void loginUser(){
