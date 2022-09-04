@@ -99,7 +99,7 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
 
         Datareference = FirebaseDatabase.getInstance().getReference();
 
-        Datareference.child("Usuarios").child(currentUser.getUid()).addValueEventListener(getUsuario);
+        Datareference.child(MainActivity.TBL_Usuarios).child(currentUser.getUid()).addValueEventListener(getUsuario);
 
         NuevoID();
         CargarPaises();
