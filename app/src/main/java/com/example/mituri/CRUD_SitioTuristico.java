@@ -63,7 +63,7 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
     private String Pais;
     private String Region;
     private String Code;
-    private long NuevoID = 0;
+    private String NuevoID;
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
 
@@ -101,7 +101,6 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
 
         Datareference.child(MainActivity.TBL_Usuarios).child(currentUser.getUid()).addValueEventListener(getUsuario);
 
-        NuevoID();
         CargarPaises();
         Permisos();
 
@@ -169,28 +168,6 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
 
         }
     };
-
-    public void NuevoID(){
-
-        //PROCESO PARA ASIGNAR EL NUEVO ID
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(MainActivity.TBL_SitioTuristico);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //VERIFICA SI EXISTE
-                if (snapshot.exists()) {
-                    //ASIGNA EL TAMAÑO DEL CONTENIDO
-                    NuevoID = (snapshot.getChildrenCount());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
 
     public void CargarPaises(){
 
@@ -316,8 +293,10 @@ public class CRUD_SitioTuristico extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference reference =database.getReference(MainActivity.TBL_SitioTuristico);
 
+                NuevoID = usuario.getIDUsuario()+TxtNombre.getText().toString();
+
                 SitioTuristico Sitio = new SitioTuristico();
-                Sitio.setIDBlog((int) NuevoID);
+                Sitio.setIDBlog(NuevoID);
                 Sitio.setNombre(TxtNombre.getText().toString());
                 Sitio.setPais(Pais);
                 Sitio.setRegion(Region);

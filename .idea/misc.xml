@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.2" />
-        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_home.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_icons8_home.xml" value="0.2985" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.33" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_login.xml" value="0.32065217391304346" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_main.xml" value="0.32065217391304346" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.32065217391304346" />
@@ -14,16 +15,11 @@
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_registrar.xml" value="0.36666666666666664" />
-
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.25" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_crud_sitio_turistico.xml" value="0.33132010353753233" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_home.xml" value="0.13" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_login.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_registrar.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/pop_up.xml" value="0.17074275362318841" />
-
+        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_crud_sitio_turistico.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_login.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/item_sitio_turistico.xml" value="0.16621376811594202" />
       </map>
     </option>
   </component>

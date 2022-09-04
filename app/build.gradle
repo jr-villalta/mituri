@@ -43,6 +43,8 @@ dependencies {
     //img circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //slider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
     //Dependencia retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -50,5 +52,9 @@ dependencies {
     //Dependencia para GSON
     implementation 'com.google.code.gson:gson:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
 }
