@@ -2,9 +2,14 @@ package com.example.mituri;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mituri.Clases.Usuario;
@@ -13,6 +18,7 @@ public class MasInformacionActivity extends AppCompatActivity {
 
     private ImageView img;
     private TextView TxtNombre, TxtPais, TxtRegion, TxtDescripcion;
+    private Button btnVerMapa;
 
     private String IDBlog;
     private String Coordenadas;
@@ -28,6 +34,7 @@ public class MasInformacionActivity extends AppCompatActivity {
         TxtRegion = findViewById(R.id.TxtRegionMasInfo);
         TxtDescripcion = findViewById(R.id.TxtDescripcionMasInfo);
         img = findViewById(R.id.imgMasInfo);
+        btnVerMapa = findViewById(R.id.BtnMapaMasInfo);
 
         TxtNombre.setText(getIntent().getStringExtra("Nombre"));
         TxtPais.setText("Pais: "+getIntent().getStringExtra("Pais"));
@@ -41,6 +48,15 @@ public class MasInformacionActivity extends AppCompatActivity {
 
         Glide.with(getApplicationContext()).load(Foto).into(img);
 
-
+        btnVerMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] coordenada = Coordenadas.split("-");
+                Uri location = Uri.parse("geo:"+coordenada[0]+",-"+coordenada[1]+"?z=14"); // z param is zoom level
+                //Toast.makeText(MasInformacionActivity.this, location.toString(), Toast.LENGTH_SHORT).show();
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+                startActivity(mapIntent);
+            }
+        });
     }
 }
