@@ -25,6 +25,9 @@
             android:value="ca-app-pub-3490124517979643~5339996289"/>
 
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarPostActivity"
             android:exported="false" />
         <activity

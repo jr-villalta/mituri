@@ -112,4 +112,8 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void MiSitios(View view) { startActivity(new Intent(MasInformacion_MisSitiosActivity.this, MisSitiosActivity.class)); }
+    public void Agregar(View view){ startActivity(new Intent(MasInformacion_MisSitiosActivity.this, AddPost.class)); }
+    public void Profile(View view) { startActivity(new Intent(MasInformacion_MisSitiosActivity.this, ProfileActivity.class)); }
 }

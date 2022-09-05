@@ -364,5 +364,6 @@ public class MisSitiosActivity extends AppCompatActivity {
         startActivity(new Intent(MisSitiosActivity.this, AddPost.class));
     }
     public void Home(View view) { startActivity(new Intent(MisSitiosActivity.this, Home.class));}
+    public void Profile(View view) { startActivity(new Intent(MisSitiosActivity.this, ProfileActivity.class)); }
 
 }
