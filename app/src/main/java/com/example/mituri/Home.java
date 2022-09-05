@@ -68,11 +68,15 @@ public class Home extends AppCompatActivity {
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
 
+    private FirebaseAuth mAuth;
+
+
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
     private ArrayList<String> ListaPaises = new ArrayList<String>();
     private ArrayList<String> ListaCodePaises = new ArrayList<String>();
     private ArrayList<String> ListaRegiones = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,17 +84,33 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         NombreSitio = findViewById(R.id.SearchBarInput);
+
         Lv_Sitio = (ListView) findViewById(R.id.ListSitios);
         Sp_Pais = findViewById(R.id.SpBuscarPais);
         Sp_Region = findViewById(R.id.SpBuscarRegion);
-
 
         //Slider IMG
         ImageSlider imageSlider = findViewById(R.id.slider);
 
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg", ScaleTypes.FIT));//Aqui se agregan los datos a la lista
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
+        FirebaseDatabase.getInstance().getReference().child("SitioTuristico")
+                .addListenerForSingleValueEvent(new ValueEventListener(){
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data:snapshot.getChildren()){
+                            slideModels.add(new SlideModel(data.child("foto").getValue().toString(),ScaleTypes.FIT));
+
+                            imageSlider.setImageList(slideModels,ScaleTypes.CENTER_INSIDE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         //Sesion Firebase
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -423,6 +443,8 @@ public class Home extends AppCompatActivity {
     public void Agregar(View view){
         startActivity(new Intent(Home.this, AddPost.class));
     }
+
+    public void Agregar(View view){startActivity(new Intent(Home.this, AddPost.class));}
     public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
 
 }
