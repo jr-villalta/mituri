@@ -47,9 +47,11 @@
 
         <EditText
             android:id="@+id/SearchBarInput"
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
             android:autofillHints=""
             android:background="@drawable/search_bg"
             android:drawableStart="?android:attr/actionModeWebSearchDrawable"
@@ -68,31 +70,31 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/Latest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Tus lugares"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="415dp"
+        android:id="@+id/linearLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-        <TextView
-            android:id="@+id/Latest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Latest"
-            android:textColor="@color/black"
-            android:textColorLink="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="134dp"
-            android:layout_marginTop="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/Latest">
 
         <ListView
             android:id="@+id/ListSitios"
@@ -131,7 +133,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
-            app:srcCompat="@drawable/ic_icons8_settings"
+            app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton

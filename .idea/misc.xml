@@ -3,40 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_google_icon_icons_com_66793.xml" value="0.2985" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_icons8_contacts.xml" value="0.2985" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_icons8_home.xml" value="0.2985" />
-        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.33" />
-        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/drawable/ic_icons8_plus.xml" value="0.2985" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.22" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_crud_sitio_turistico.xml" value="0.32382246376811596" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_login.xml" value="0.32065217391304346" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_main.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_mas_informacion.xml" value="0.32382246376811596" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_mas_informacion_mis_sitios.xml" value="0.22" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_mis_sitios.xml" value="0.25" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.32065217391304346" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/activity_registrar.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/item_sitio_turistico.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Isai/Documents/Universidad/Ingieneria de Software/mituri/app/src/main/res/layout/pop_up.xml" value="0.32382246376811596" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_registrar.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/activity_mas_informacion.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/activity_mas_informacion_mis_sitios.xml" value="0.25" />
-        <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/activity_mis_sitios.xml" value="0.21" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_google_icon_icons_com_66793.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_icons8_home.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_icons8_plus.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_icons8_settings.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_imagelogin.xml" value="0.2065" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_imageregister.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/drawable/ic_listamissitios.xml" value="0.168" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_crud_sitio_turistico.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_home.xml" value="0.22" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_login.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_mas_informacion.xml" value="0.22" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_mas_informacion_mis_sitios.xml" value="0.17844202898550723" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_mis_sitios.xml" value="0.17844202898550723" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/item_sitio_turistico.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2075" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2075" />
       </map>
     </option>
   </component>

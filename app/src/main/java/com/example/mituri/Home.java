@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.mituri.Adaptador.AdaptadorSitioTuristico;
 import com.example.mituri.Clases.SitioTuristico;
 import com.example.mituri.Clases.Usuario;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,6 +42,9 @@ public class Home extends AppCompatActivity {
     ImageView userImage;
     public Dialog popUp;
     DatabaseReference databaseReference;
+
+    EditText searchbtn;
+
     private FirebaseAuth mAuth;
 
 
@@ -138,6 +144,14 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        searchbtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                firebasePostSearch();
+            }
+        });
+
     }
 
     private void updateUI(FirebaseUser currentUser) {
@@ -183,4 +197,10 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, AddPost.class));
     }
     public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
+
+
+
+    private void firebasePostSearch(){
+
+    }
 }

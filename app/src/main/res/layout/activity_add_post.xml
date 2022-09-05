@@ -24,7 +24,6 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
             android:text="Genial! Comparte un nuevo lugar "
-            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -67,13 +66,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/color2"
+            android:onClick="CargarFoto"
             android:text="Agrega una Imagen"
             android:textColor="@color/black"
             app:icon="@android:drawable/ic_menu_gallery"
             app:iconGravity="start"
             app:iconPadding="1dp"
-            app:iconTint="@color/black"
-            android:onClick="CargarFoto"/>
+            app:iconTint="@color/black" />
 
         <LinearLayout
             android:layout_width="290dp"
