@@ -105,9 +105,10 @@ public class MisSitiosActivity extends AppCompatActivity {
                     Code = ListaCodePaises.get(i);
 
                     databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitiosPorPais);
+                    //LLAMADO A LA FUNCION
+                    CargarRegiones();
                 }
-                //LLAMADO A LA FUNCION
-                CargarRegiones();
+
             }
 
             @Override
@@ -146,20 +147,6 @@ public class MisSitiosActivity extends AppCompatActivity {
 
     }
 
-    public void LimpiarFiltro(View view){
-        Pais = null;
-        Code = " ";
-        Region = null;
-        NombreSitio.setText(null);
-        CargarPaises();
-
-        ListaRegiones.clear();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MisSitiosActivity.this, android.R.layout.simple_dropdown_item_1line, ListaRegiones);
-        Sp_Region.setAdapter(adapter);
-
-        databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
-    }
-
     public ValueEventListener getUsuario = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -175,19 +162,34 @@ public class MisSitiosActivity extends AppCompatActivity {
         }
     };
 
+    public void LimpiarFiltro(View view){
+        Pais = null;
+        Code = " ";
+        Region = null;
+        NombreSitio.setText(null);
+        CargarPaises();
+
+        ListaRegiones.clear();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MisSitiosActivity.this, android.R.layout.simple_dropdown_item_1line, ListaRegiones);
+        Sp_Region.setAdapter(adapter);
+
+        databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
+    }
 
     public ValueEventListener CargarSitios = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
             if (snapshot.exists()){
-                Pais = null;
-                Code = null;
-                Region = null;
-                NombreSitio.setText(null);
+
                 ListSitio.clear();
                 for (DataSnapshot items : snapshot.getChildren()) {
                     SitioTuristico Sitio = items.getValue(SitioTuristico.class);
-                    ListSitio.add(Sitio);
+
+                    assert Sitio != null;
+                    if (Sitio.getUsuario().getIDUsuario().equals(currentUser.getUid())){
+                        ListSitio.add(Sitio);
+                    }
+
                 }
                 AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
                 Lv_Sitio.setAdapter(AdaptadorSitio);
@@ -209,13 +211,13 @@ public class MisSitiosActivity extends AppCompatActivity {
                     SitioTuristico Sitio = items.getValue(SitioTuristico.class);
 
                     assert Sitio != null;
-                    if (Sitio.getNombre().equals(Nombre)){
-                        ListSitio.add(Sitio);
+                    if (Sitio.getUsuario().getIDUsuario().equals(currentUser.getUid())) {
+                        if (Sitio.getNombre().equals(Nombre)) {
+                            ListSitio.add(Sitio);
+                        }
                     }
-
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -234,13 +236,14 @@ public class MisSitiosActivity extends AppCompatActivity {
                     SitioTuristico Sitio = items.getValue(SitioTuristico.class);
 
                     assert Sitio != null;
-                    if (Sitio.getPais().equals(Pais)){
-                        ListSitio.add(Sitio);
+                    if (Sitio.getUsuario().getIDUsuario().equals(currentUser.getUid())) {
+                        if (Sitio.getPais().equals(Pais)) {
+                            ListSitio.add(Sitio);
+                        }
                     }
 
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -259,14 +262,15 @@ public class MisSitiosActivity extends AppCompatActivity {
                     SitioTuristico Sitio = items.getValue(SitioTuristico.class);
 
                     assert Sitio != null;
-                    if (Sitio.getPais().equals(Pais)){
-                        if (Sitio.getRegion().equals(Region)){
-                            ListSitio.add(Sitio);
+                    if (Sitio.getUsuario().getIDUsuario().equals(currentUser.getUid())) {
+                        if (Sitio.getPais().equals(Pais)) {
+                            if (Sitio.getRegion().equals(Region)) {
+                                ListSitio.add(Sitio);
+                            }
                         }
                     }
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -275,6 +279,11 @@ public class MisSitiosActivity extends AppCompatActivity {
 
         }
     };
+
+    public void Adaptador(){
+        AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
+        Lv_Sitio.setAdapter(AdaptadorSitio);
+    }
 
     public void CargarPaises(){
 

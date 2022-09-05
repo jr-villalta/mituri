@@ -263,8 +263,7 @@ public class Home extends AppCompatActivity {
                     SitioTuristico Sitio = items.getValue(SitioTuristico.class);
                     ListSitio.add(Sitio);
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -288,8 +287,7 @@ public class Home extends AppCompatActivity {
                     }
 
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -313,8 +311,7 @@ public class Home extends AppCompatActivity {
                     }
 
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -337,8 +334,7 @@ public class Home extends AppCompatActivity {
                         }
                     }
                 }
-                AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
-                Lv_Sitio.setAdapter(AdaptadorSitio);
+                Adaptador();
             }
         }
 
@@ -347,6 +343,11 @@ public class Home extends AppCompatActivity {
 
         }
     };
+
+    public void Adaptador(){
+        AdaptadorSitioTuristico AdaptadorSitio = new AdaptadorSitioTuristico(ListSitio, getApplicationContext());
+        Lv_Sitio.setAdapter(AdaptadorSitio);
+    }
 
     public void CargarPaises(){
 
