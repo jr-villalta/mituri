@@ -45,28 +45,80 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/SearchBarInput"
-            android:layout_width="360dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:autofillHints=""
-            android:background="@drawable/search_bg"
-            android:drawableStart="?android:attr/actionModeWebSearchDrawable"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Search here..."
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textColor="@color/color4"
-            android:textColorHighlight="@color/color1"
-            android:textColorHint="@color/color4"
-            android:textColorLink="@color/color4"
-            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/SearchBarInput"
+                android:layout_width="339dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:autofillHints=""
+                android:background="@drawable/search_bg"
+                android:drawableStart="?android:attr/actionModeWebSearchDrawable"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Search here..."
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/color4"
+                android:textColorHighlight="@color/color1"
+                android:textColorHint="@color/color4"
+                android:textColorLink="@color/color4"
+                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_search"
+                android:onClick="Buscar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="342dp"
+                android:layout_height="match_parent"
+                android:background="#D88989"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/SpBuscarPais"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    android:textColor="@color/black" />
+
+                <Spinner
+                    android:id="@+id/SpBuscarRegion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000" />
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnLimpiar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                android:onClick="LimpiarFiltro"/>
+        </LinearLayout>
 
     </LinearLayout>
 
