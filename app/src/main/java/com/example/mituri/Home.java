@@ -73,7 +73,7 @@ public class Home extends AppCompatActivity {
                         for(DataSnapshot data:snapshot.getChildren()){
                             slideModels.add(new SlideModel(data.child("foto").getValue().toString(),ScaleTypes.FIT));
 
-                            imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+                            imageSlider.setImageList(slideModels,ScaleTypes.CENTER_INSIDE);
                         }
                     }
 
@@ -82,10 +82,6 @@ public class Home extends AppCompatActivity {
 
                     }
                 });
-
-        //slideModels.add(new SlideModel("", ScaleTypes.FIT));
-        //slideModels.add(new SlideModel("https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg", ScaleTypes.FIT));//Aqui se agregan los datos a la lista
-        //imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         //Sesion Firebase
         databaseReference = FirebaseDatabase.getInstance().getReference();
