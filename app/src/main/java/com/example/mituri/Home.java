@@ -114,7 +114,7 @@ public class Home extends AppCompatActivity {
                         for(DataSnapshot data:snapshot.getChildren()){
                             slideModels.add(new SlideModel(data.child("foto").getValue().toString(),ScaleTypes.FIT));
 
-                            imageSlider.setImageList(slideModels,ScaleTypes.CENTER_INSIDE);
+                            imageSlider.setImageList(slideModels,ScaleTypes.FIT);
                         }
                     }
 
