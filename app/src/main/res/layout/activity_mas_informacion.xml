@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:drawableBottom="@android:drawable/ic_dialog_map"
                 android:text="Ver En Mapa" />
         </LinearLayout>
 
