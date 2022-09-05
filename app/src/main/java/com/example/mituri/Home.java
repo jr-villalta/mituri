@@ -68,7 +68,6 @@ public class Home extends AppCompatActivity {
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
 
-
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
     private ArrayList<String> ListaPaises = new ArrayList<String>();
@@ -436,6 +435,7 @@ public class Home extends AppCompatActivity {
             }
         });
     }
+
     public void Agregar(View view){startActivity(new Intent(Home.this, AddPost.class));}
     public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
 
