@@ -26,6 +26,11 @@ import com.example.mituri.Modelo.ModPaises;
 import com.example.mituri.Modelo.ModRegiones;
 import com.example.mituri.Modelo.ServiceAPI;
 import com.example.mituri.ServiceUtils.ApiDireccion;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -79,7 +84,7 @@ public class AddPost extends AppCompatActivity {
     private Button btnGPS, btnGuardar;
     private String Foto = MainActivity.Foto_NuevoBlog;
 
-
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +114,16 @@ public class AddPost extends AppCompatActivity {
 
         CargarPaises();
         Permisos();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         //FUNCION DE SELECCION DEL SPINNER DE PAISES
         Sp_Pais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -389,6 +404,7 @@ public class AddPost extends AppCompatActivity {
         Sitio.setIDBlog(NuevoID);
         Sitio.setNombre(TxtNombre.getText().toString());
         Sitio.setPais(Pais);
+        Sitio.setCode(Code);
         Sitio.setRegion(Region);
         Sitio.setCoordenadas(tvUbication.getText().toString());
         Sitio.setDescripcion(TxtDescripcion.getText().toString());

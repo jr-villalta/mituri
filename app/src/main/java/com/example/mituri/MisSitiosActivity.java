@@ -86,6 +86,7 @@ public class MisSitiosActivity extends AppCompatActivity {
                 intent.putExtra("IDBlog", ListSitio.get(i).getIDBlog());
                 intent.putExtra("Nombre", ListSitio.get(i).getNombre());
                 intent.putExtra("Pais", ListSitio.get(i).getPais());
+                intent.putExtra("Code", ListSitio.get(i).getCode());
                 intent.putExtra("Region", ListSitio.get(i).getRegion());
                 intent.putExtra("Coordenadas", ListSitio.get(i).getCoordenadas());
                 intent.putExtra("Descripcion", ListSitio.get(i).getDescripcion());
