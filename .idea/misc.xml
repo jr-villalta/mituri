@@ -15,7 +15,6 @@
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_recovery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/AndroidStudioProjects/mituri/app/src/main/res/layout/activity_registrar.xml" value="0.36666666666666664" />
-
         <entry key="..\:/Users/Jr/Downloads/mituri/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/Downloads/mituri/app/src/main/res/layout/activity_mas_informacion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jr/Downloads/mituri/app/src/main/res/layout/activity_mas_informacion_mis_sitios.xml" value="0.36666666666666664" />
@@ -27,6 +26,7 @@
         <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/activity_mis_sitios.xml" value="0.25" />
         <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/activity_recovery.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/My_Pc/Desktop/Mituri/app/src/main/res/layout/layout_calificar_flotante.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/My_Pc/Desktop/mituri/app/src/main/res/drawable/ic_icon_foreground.xml" value="0.1945" />
         <entry key="..\:/Users/My_Pc/Desktop/mituri/app/src/main/res/layout/activity_mas_informacion.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/My_Pc/Desktop/mituri/app/src/main/res/layout/layout_calificar_flotante.xml" value="0.15534420289855072" />
         <entry key="..\:/Users/ulise/AndroidStudioProjects/MiTuriClone/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.16621376811594202" />
@@ -51,11 +51,6 @@
         <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/layout/item_sitio_turistico.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2075" />
         <entry key="..\:/Users/ulise/AndroidStudioProjects/mituri/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2075" />
-
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/MiTuriClone/mituri/app/src/main/res/layout/activity_add_post.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/MiTuriClone/mituri/app/src/main/res/layout/activity_editar_post.xml" value="0.25" />
-        <entry key="..\:/Users/ulise/AndroidStudioProjects/MiTuriClone/mituri/app/src/main/res/layout/activity_mas_informacion_mis_sitios.xml" value="0.16621376811594202" />
-
       </map>
     </option>
   </component>
