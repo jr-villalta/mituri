@@ -47,30 +47,45 @@ public class Home extends AppCompatActivity {
     public Dialog popUp;
     DatabaseReference databaseReference;
 
-    EditText searchbtn;
-
     private FirebaseAuth mAuth;
-
 
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        searchbtn = findViewById(R.id.SearchBarInput);
-
         Lv_Sitio = (ListView) findViewById(R.id.ListSitios);
-
 
         //Slider IMG
         ImageSlider imageSlider = findViewById(R.id.slider);
 
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg", ScaleTypes.FIT));//Aqui se agregan los datos a la lista
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
+        FirebaseDatabase.getInstance().getReference().child("SitioTuristico")
+                .addListenerForSingleValueEvent(new ValueEventListener(){
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data:snapshot.getChildren()){
+                            slideModels.add(new SlideModel(data.child("foto").getValue().toString(),ScaleTypes.FIT));
+
+                            imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        //slideModels.add(new SlideModel("", ScaleTypes.FIT));
+        //slideModels.add(new SlideModel("https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg", ScaleTypes.FIT));//Aqui se agregan los datos a la lista
+        //imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         //Sesion Firebase
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -150,31 +165,6 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        searchbtn.addTextChangedListener(new TextWatcher(){
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!s.toString().isEmpty()){
-                    searchFuntion(s.toString());
-                }
-                else {
-                    searchFuntion("");
-                }
-
-            }
-        });
-
-
     }
 
     private void updateUI(FirebaseUser currentUser) {
@@ -216,15 +206,7 @@ public class Home extends AppCompatActivity {
         }
     };
 
-    public void Agregar(View view){
-        startActivity(new Intent(Home.this, AddPost.class));
-    }
+    public void Agregar(View view){startActivity(new Intent(Home.this, AddPost.class));}
     public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
-
-    public void searchFuntion(String s) {
-        Query query = databaseReference.orderByChild("name")
-                .startAt(s)
-                .endAt(s + "/uf8ff");
-    }
 
 }
