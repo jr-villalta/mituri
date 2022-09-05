@@ -76,6 +76,8 @@
                 android:layout_height="132dp"
                 android:layout_marginTop="20dp"
                 android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/color4"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -97,11 +99,11 @@
                     android:id="@+id/mediaEstrellas"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="[0]"
-                    android:textSize="25dp"
                     android:layout_gravity="center"
+                    android:text="[0]"
                     android:textAlignment="center"
-                    />
+                    android:textColor="@color/color4"
+                    android:textSize="25dp" />
 
             </LinearLayout>
 
