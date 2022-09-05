@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.Objects;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -72,7 +72,6 @@ public class MasInformacionActivity extends AppCompatActivity {
             btnCalificar.setVisibility(View.INVISIBLE);
         }
 
-
         reference.child(IDBlog).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -84,7 +83,9 @@ public class MasInformacionActivity extends AppCompatActivity {
                 }
                 valorMedio /= contador;
                 ratingBar.setRating(valorMedio);
-                TxtMediaEstrellas.setText("["+valorMedio+"]");
+                if(!Float.isNaN(valorMedio)) {
+                    TxtMediaEstrellas.setText("[" + valorMedio + "]");
+                }
             }
 
             @Override
@@ -98,7 +99,6 @@ public class MasInformacionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String[] coordenada = Coordenadas.split("-");
                 Uri location = Uri.parse("geo:" + coordenada[0] + ",-" + coordenada[1] + "?z=14"); // z param is zoom level
-                //Toast.makeText(MasInformacionActivity.this, location.toString(), Toast.LENGTH_SHORT).show();
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 startActivity(mapIntent);
             }
@@ -129,11 +129,12 @@ public class MasInformacionActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         //Toast.makeText(MasInformacionActivity.this, ""+task.getResult().getValue(), Toast.LENGTH_SHORT).show();
-                        String valor = task.getResult().getValue().toString();
-                        ratingBar2.setRating(Float.parseFloat(valor));
+                        if(!Objects.isNull(task.getResult().getValue())){
+                            String valor = task.getResult().getValue().toString();
+                            ratingBar2.setRating(Float.parseFloat(valor));
+                        }
                     }
                 });
-
 
                 ratingBar2.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                     @Override
