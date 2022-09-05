@@ -122,30 +122,32 @@ public class EditarPostActivity extends AppCompatActivity {
         TxtDescripcion.setText(getIntent().getStringExtra("Descripcion"));
         tvUbication.setText(getIntent().getStringExtra("Coordenadas"));
         Pais = getIntent().getStringExtra("Pais");
-        Code = getIntent().getStringExtra("Code");
         Region = getIntent().getStringExtra("Region");
         Foto = getIntent().getStringExtra("Foto");
 
+        ListaPaises.add(Pais);
+        ListaRegiones.add(Region);
         Glide.with(getApplicationContext()).load(Foto).into(Img);
 
         CargarPaises();
-        CargarRegiones();
         Permisos();
-
-
-
 
         //FUNCION DE SELECCION DEL SPINNER DE PAISES
         Sp_Pais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ListaRegiones.clear();
                 //SE ASIGNA EL VALOR A LA VARIABLE SEGUN LA POSICION
                 if (!ListaPaises.get(i).equals(ListaPaises.get(0))){
                     Pais = ListaPaises.get(i);
                     Code = ListaCodePaises.get(i);
+                    ListaRegiones.add("Seleccione una region");
+                    CargarRegiones();
+                }else {
+                    Code = getIntent().getStringExtra("Code");
+                    ListaRegiones.add(getIntent().getStringExtra("Region"));
+                    CargarRegiones();
                 }
-                //LLAMADO A LA FUNCION
-                CargarRegiones();
             }
 
             @Override
@@ -247,8 +249,8 @@ public class EditarPostActivity extends AppCompatActivity {
             public void onResponse(Call<List<ModPaises>> call, Response<List<ModPaises>> response) {
                 //VERIFICA SI HAY DATOS
                 if (response.isSuccessful()) {
-                    ListaPaises.add(Pais);
-                    ListaCodePaises.add(" ");
+                    ListaCodePaises.add(getIntent().getStringExtra("Code"));
+
                     //CICLO FOREACH PARA LA OBTENCION DE DATOS
                     for (ModPaises ItemPais : response.body()) {
                         //ALMACENA LOS DATOS EN LAS LISTA DE LOS ARRAY
@@ -274,8 +276,6 @@ public class EditarPostActivity extends AppCompatActivity {
 
     //FUNCION DE CONSUMO DE API DE LAS REGIONES
     public void CargarRegiones() {
-        //LIMPIA LA LISTA DE LAS REGIONES
-        ListaRegiones.clear();
 
         //ASIGNACION DE SERVICION
         ServicioRegiones = ApiDireccion.getServiceRegion();
@@ -286,7 +286,7 @@ public class EditarPostActivity extends AppCompatActivity {
 
                 //VERIFICA SI HAY DATOS
                 if (response.isSuccessful()) {
-                    ListaRegiones.add(Region);
+
                     //CICLO FOREACH PARA LA OBTENCION DE DATOS
                     for (ModRegiones ItemRegion : response.body()) {
                         //ALMACENA LOS DATOS EN LAS LISTA DEL ARRAY
