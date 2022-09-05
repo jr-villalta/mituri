@@ -47,10 +47,9 @@ public class MisSitiosActivity extends AppCompatActivity {
 
     TextView userName;
     ImageView userImage;
-    DatabaseReference databaseReference;
 
     public FirebaseUser currentUser;
-    private TextView userName, NombreSitio;
+    private TextView NombreSitio;
     private Spinner Sp_Pais, Sp_Region;
     private String Nombre;
     private String Pais;

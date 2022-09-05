@@ -50,11 +50,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/SearchBarInput"
-                android:layout_width="339dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
@@ -80,9 +81,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/color2"
                 android:clickable="true"
                 android:onClick="Buscar"
-                app:srcCompat="@android:drawable/ic_menu_search" />
+                app:srcCompat="@android:drawable/ic_menu_search"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -90,12 +93,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="342dp"
+                android:layout_width="310dp"
                 android:layout_height="match_parent"
                 android:background="#D88989"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <Spinner
@@ -103,13 +108,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#000000"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <Spinner
                     android:id="@+id/SpBuscarRegion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#000000" />
+                    android:backgroundTint="#000000"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -117,9 +124,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/color2"
                 android:clickable="true"
+                android:onClick="LimpiarFiltro"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-                android:onClick="LimpiarFiltro"/>
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
     </LinearLayout>
