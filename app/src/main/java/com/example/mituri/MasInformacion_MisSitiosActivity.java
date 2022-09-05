@@ -23,6 +23,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
     private Button btnVerMapa, btnEditar,btnEliminar;
 
     private String IDBlog;
+    private String Code;
     private String Coordenadas;
     private String Foto;
 
@@ -46,6 +47,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
         TxtDescripcion.setText(getIntent().getStringExtra("Descripcion"));
 
         IDBlog = getIntent().getStringExtra("IDBlog");
+        Code = getIntent().getStringExtra("Code");
         Coordenadas = getIntent().getStringExtra("Coordenadas");
 
         Foto = getIntent().getStringExtra("Foto");
@@ -100,6 +102,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
                 intent.putExtra("IDBlog", IDBlog);
                 intent.putExtra("Nombre", getIntent().getStringExtra("Nombre"));
                 intent.putExtra("Pais", getIntent().getStringExtra("Pais"));
+                intent.putExtra("Code", getIntent().getStringExtra("Code"));
                 intent.putExtra("Region", getIntent().getStringExtra("Region"));
                 intent.putExtra("Coordenadas", Coordenadas);
                 intent.putExtra("Descripcion", getIntent().getStringExtra("Descripcion"));
