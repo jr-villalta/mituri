@@ -104,6 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
                 txtApellidoPerfil.setText(usuario.getApellido());
             }
         }
+
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
 
