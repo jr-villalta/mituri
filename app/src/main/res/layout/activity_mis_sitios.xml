@@ -122,9 +122,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="home"
+            android:onClick="Home"
             app:srcCompat="@drawable/ic_icons8_home"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:onClick="Home"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/porfilesettingsbtn"
@@ -133,6 +133,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
+            android:onClick="Profile"
             app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -143,9 +144,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="addplace"
+            android:onClick="Agregar"
             app:srcCompat="@drawable/ic_icons8_plus"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:onClick="Agregar"/>
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

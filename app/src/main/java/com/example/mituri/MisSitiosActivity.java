@@ -135,4 +135,6 @@ public class MisSitiosActivity extends AppCompatActivity {
         }
     }
 
+    public void Profile(View view) { startActivity(new Intent(MisSitiosActivity.this, ProfileActivity.class)); }
+
 }
