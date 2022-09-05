@@ -68,9 +68,6 @@ public class Home extends AppCompatActivity {
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
 
-    private FirebaseAuth mAuth;
-
-
     private ListView Lv_Sitio;
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
     private ArrayList<String> ListaPaises = new ArrayList<String>();
@@ -94,6 +91,21 @@ public class Home extends AppCompatActivity {
 
         List<SlideModel> slideModels = new ArrayList<>();
 
+        //Sesion Firebase
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
+
+        userName = (TextView) findViewById(R.id.textViewUsuario);
+        userImage = (ImageView) findViewById(R.id.profile_image);
+
+        updateUI(user);
+        CargarPaises();
+
+        popUp = new Dialog(this);
+
         FirebaseDatabase.getInstance().getReference().child("SitioTuristico")
                 .addListenerForSingleValueEvent(new ValueEventListener(){
 
@@ -111,21 +123,6 @@ public class Home extends AppCompatActivity {
 
                     }
                 });
-
-        //Sesion Firebase
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-
-        databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
-
-        userName = (TextView) findViewById(R.id.textViewUsuario);
-        userImage = (ImageView) findViewById(R.id.profile_image);
-
-        updateUI(user);
-        CargarPaises();
-
-        popUp = new Dialog(this);
 
         //Pop-up
         userImage.setOnClickListener(new View.OnClickListener() {
@@ -438,10 +435,6 @@ public class Home extends AppCompatActivity {
                 Log.d("Respuesta", "Fail " + t);
             }
         });
-    }
-
-    public void Agregar(View view){
-        startActivity(new Intent(Home.this, AddPost.class));
     }
 
     public void Agregar(View view){startActivity(new Intent(Home.this, AddPost.class));}

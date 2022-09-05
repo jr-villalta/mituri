@@ -31,7 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +43,6 @@ import retrofit2.Response;
 public class MisSitiosActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
-
-    TextView userName;
-    ImageView userImage;
-    DatabaseReference databaseReference;
-
     public FirebaseUser currentUser;
     private TextView userName, NombreSitio;
     private Spinner Sp_Pais, Sp_Region;
@@ -67,8 +61,6 @@ public class MisSitiosActivity extends AppCompatActivity {
     private ArrayList<String> ListaCodePaises = new ArrayList<String>();
     private ArrayList<String> ListaRegiones = new ArrayList<String>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +68,6 @@ public class MisSitiosActivity extends AppCompatActivity {
 
         NombreSitio = findViewById(R.id.SearchBarInput);
         userName = (TextView) findViewById(R.id.textViewUsuario);
-        userImage = (ImageView) findViewById(R.id.profile_image);
         Lv_Sitio = (ListView) findViewById(R.id.ListSitios);
         Sp_Pais = findViewById(R.id.SpBuscarPais);
         Sp_Region = findViewById(R.id.SpBuscarRegion);
@@ -86,7 +77,6 @@ public class MisSitiosActivity extends AppCompatActivity {
         databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
 
         CargarPaises();
-        updateUI(currentUser);
 
         Lv_Sitio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -118,6 +108,8 @@ public class MisSitiosActivity extends AppCompatActivity {
                     //LLAMADO A LA FUNCION
                     CargarRegiones();
                 }
+                
+                databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
 
             }
 
@@ -125,6 +117,7 @@ public class MisSitiosActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
 
         //FUNCION DE SELECCION DEL SPINNER DE REGIONES
@@ -370,20 +363,5 @@ public class MisSitiosActivity extends AppCompatActivity {
         startActivity(new Intent(MisSitiosActivity.this, AddPost.class));
     }
     public void Home(View view) { startActivity(new Intent(MisSitiosActivity.this, Home.class));}
-
-    private void updateUI(FirebaseUser currentUser) {
-        if(currentUser != null){
-            userName.setText(currentUser.getEmail());
-            if(currentUser.getPhotoUrl() != null){
-                Picasso.get().load(currentUser.getPhotoUrl()).into(userImage);
-            }else{
-                Picasso.get().load("https://www.looper.com/img/gallery/fans-are-absolutely-loving-the-return-of-doc-ock-in-the-spider-man-no-way-home-trailer/l-intro-1629817758.jpg").into(userImage);
-            }
-        }else{
-            userName.setText("Invitado");
-            Picasso.get().load("https://png.pngitem.com/pimgs/s/130-1300400_user-hd-png-download.png").into(userImage);
-
-        }
-    }
 
 }
