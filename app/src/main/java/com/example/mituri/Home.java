@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -57,6 +58,7 @@ public class Home extends AppCompatActivity {
     private ImageView userImage;
     public Dialog popUp;
     private Spinner Sp_Pais, Sp_Region;
+    private LinearLayout LinerMenu;
 
     private String Nombre;
     private String Pais;
@@ -80,6 +82,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        LinerMenu = findViewById(R.id.linearLayout2);
         NombreSitio = findViewById(R.id.SearchBarInput);
 
         Lv_Sitio = (ListView) findViewById(R.id.ListSitios);
@@ -236,6 +239,7 @@ public class Home extends AppCompatActivity {
                 Picasso.get().load("https://uybor.uz/borless/uybor/img/user-images/user_no_photo_300x300.png").into(userImage);
             }
         }else{
+            LinerMenu.setVisibility(View.INVISIBLE);
             userName.setText("Invitado");
             Picasso.get().load("https://png.pngitem.com/pimgs/s/130-1300400_user-hd-png-download.png").into(userImage);
 
