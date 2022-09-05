@@ -50,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         btnRecuperar.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, RegistrarActivity.class));
         });
+        btnRecuperar.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, RecoveryActivity.class));
+        });
     }
 
     private void loginUser(){
@@ -71,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "El usuario inició sesión con éxito\n", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, Home.class));
                     }else{
                         Toast.makeText(LoginActivity.this, "Error de inicio de sesión\n: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

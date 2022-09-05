@@ -92,7 +92,7 @@ public class RegistrarActivity extends AppCompatActivity {
 
                         String idUsuario = mAuth.getCurrentUser().getUid();
 
-                        databaseReference.child("Usuarios").child(idUsuario).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        databaseReference.child(MainActivity.TBL_Usuarios).child(idUsuario).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if (task2.isSuccessful()){
