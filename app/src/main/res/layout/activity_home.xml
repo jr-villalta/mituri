@@ -45,7 +45,6 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <EditText
@@ -69,12 +68,6 @@
             android:textColorHint="@color/color4"
             android:textColorLink="@color/color4"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
-
-        <SearchView
-            android:layout_width="360dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@drawable/search_bg" />
 
     </LinearLayout>
 
