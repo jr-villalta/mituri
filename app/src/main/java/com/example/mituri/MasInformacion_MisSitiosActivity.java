@@ -89,11 +89,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
                 builder.show();
             }
         });
-        btnEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
+
+    public void Editar(View view){startActivity(new Intent(MasInformacion_MisSitiosActivity.this, UpdatePost.class));}
 }

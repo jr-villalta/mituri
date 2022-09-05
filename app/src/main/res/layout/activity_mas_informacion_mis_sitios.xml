@@ -110,6 +110,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="Editar"
                 android:text="Editar"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
