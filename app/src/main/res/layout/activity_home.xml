@@ -49,8 +49,9 @@
 
         <EditText
             android:id="@+id/SearchBarInput"
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:autofillHints=""
             android:background="@drawable/search_bg"
@@ -71,8 +72,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="415dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,9 +82,13 @@
 
         <TextView
             android:id="@+id/Latest"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:layout_marginTop="8dp"
+            android:foregroundGravity="fill_horizontal"
+            android:gravity="start"
+            android:paddingStart="10dp"
             android:text="Latest"
             android:textColor="@color/black"
             android:textColorLink="@color/black"
@@ -93,7 +98,7 @@
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/slider"
             android:layout_width="match_parent"
-            android:layout_height="134dp"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp" />
 
         <ListView
@@ -122,9 +127,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="misSitios"
-            app:srcCompat="@drawable/ic_listamissitios"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:onClick="MiSitios"/>
+            android:onClick="MiSitios"
+            app:srcCompat="@drawable/ic_icons8_box"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/porfilesettingsbtn"
@@ -133,7 +138,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
-            app:srcCompat="@drawable/ic_icons8_settings"
+            app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
