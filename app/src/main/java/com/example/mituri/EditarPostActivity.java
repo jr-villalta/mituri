@@ -33,6 +33,11 @@ import com.example.mituri.Modelo.ModPaises;
 import com.example.mituri.Modelo.ModRegiones;
 import com.example.mituri.Modelo.ServiceAPI;
 import com.example.mituri.ServiceUtils.ApiDireccion;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -84,6 +89,7 @@ public class EditarPostActivity extends AppCompatActivity {
     private Button btnGPS, btnGuardar;
     private String Foto;
 
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,13 +122,18 @@ public class EditarPostActivity extends AppCompatActivity {
         TxtDescripcion.setText(getIntent().getStringExtra("Descripcion"));
         tvUbication.setText(getIntent().getStringExtra("Coordenadas"));
         Pais = getIntent().getStringExtra("Pais");
+        Code = getIntent().getStringExtra("Code");
         Region = getIntent().getStringExtra("Region");
         Foto = getIntent().getStringExtra("Foto");
 
         Glide.with(getApplicationContext()).load(Foto).into(Img);
 
         CargarPaises();
+        CargarRegiones();
         Permisos();
+
+
+
 
         //FUNCION DE SELECCION DEL SPINNER DE PAISES
         Sp_Pais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -236,7 +247,7 @@ public class EditarPostActivity extends AppCompatActivity {
             public void onResponse(Call<List<ModPaises>> call, Response<List<ModPaises>> response) {
                 //VERIFICA SI HAY DATOS
                 if (response.isSuccessful()) {
-                    ListaPaises.add("Seleccione un Pais");
+                    ListaPaises.add(Pais);
                     ListaCodePaises.add(" ");
                     //CICLO FOREACH PARA LA OBTENCION DE DATOS
                     for (ModPaises ItemPais : response.body()) {
@@ -275,7 +286,7 @@ public class EditarPostActivity extends AppCompatActivity {
 
                 //VERIFICA SI HAY DATOS
                 if (response.isSuccessful()) {
-                    ListaRegiones.add("Seleccione una Region");
+                    ListaRegiones.add(Region);
                     //CICLO FOREACH PARA LA OBTENCION DE DATOS
                     for (ModRegiones ItemRegion : response.body()) {
                         //ALMACENA LOS DATOS EN LAS LISTA DEL ARRAY
@@ -371,6 +382,7 @@ public class EditarPostActivity extends AppCompatActivity {
         Sitio.setIDBlog(ID);
         Sitio.setNombre(TxtNombre.getText().toString());
         Sitio.setPais(Pais);
+        Sitio.setCode(Code);
         Sitio.setRegion(Region);
         Sitio.setCoordenadas(tvUbication.getText().toString());
         Sitio.setDescripcion(TxtDescripcion.getText().toString());

@@ -5,6 +5,7 @@ public class SitioTuristico {
     private String IDBlog;
     private String Nombre;
     private String Pais;
+    private String Code;
     private String Region;
     private String Coordenadas;
     private String Descripcion;
@@ -15,11 +16,12 @@ public class SitioTuristico {
 
     }
 
-    public SitioTuristico(String IDBlog, String nombre, String pais, String region, String coordenadas,
-                          String descripcion, String foto, com.example.mituri.Clases.Usuario usuario) {
+    public SitioTuristico(String IDBlog, String nombre, String pais, String code, String region,
+                          String coordenadas, String descripcion, String foto, com.example.mituri.Clases.Usuario usuario) {
         this.IDBlog = IDBlog;
         Nombre = nombre;
         Pais = pais;
+        Code = code;
         Region = region;
         Coordenadas = coordenadas;
         Descripcion = descripcion;
@@ -49,6 +51,14 @@ public class SitioTuristico {
 
     public void setPais(String pais) {
         Pais = pais;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
     }
 
     public String getRegion() {
