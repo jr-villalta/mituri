@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,6 +32,7 @@ import java.util.Objects;
 public class MisSitiosActivity extends AppCompatActivity {
 
     TextView userName;
+    ImageView userImage;
     DatabaseReference databaseReference;
     public FirebaseUser currentUser;
 
@@ -39,17 +41,22 @@ public class MisSitiosActivity extends AppCompatActivity {
     private Usuario usuario = new Usuario();
     private ArrayList<SitioTuristico> ListSitio = new ArrayList<>();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_sitios);
 
         userName = (TextView) findViewById(R.id.textViewUsuario);
+        userImage = (ImageView) findViewById(R.id.profile_image);
         Lv_Sitio = (ListView) findViewById(R.id.ListSitios);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child(MainActivity.TBL_Usuarios).child(currentUser.getUid()).addValueEventListener(getUsuario);
         databaseReference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(CargarSitios);
+
+        updateUI(currentUser);
 
         Lv_Sitio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -112,5 +119,20 @@ public class MisSitiosActivity extends AppCompatActivity {
         startActivity(new Intent(MisSitiosActivity.this, AddPost.class));
     }
     public void Home(View view) { startActivity(new Intent(MisSitiosActivity.this, Home.class));}
+
+    private void updateUI(FirebaseUser currentUser) {
+        if(currentUser != null){
+            userName.setText(currentUser.getEmail());
+            if(currentUser.getPhotoUrl() != null){
+                Picasso.get().load(currentUser.getPhotoUrl()).into(userImage);
+            }else{
+                Picasso.get().load("https://www.looper.com/img/gallery/fans-are-absolutely-loving-the-return-of-doc-ock-in-the-spider-man-no-way-home-trailer/l-intro-1629817758.jpg").into(userImage);
+            }
+        }else{
+            userName.setText("Invitado");
+            Picasso.get().load("https://png.pngitem.com/pimgs/s/130-1300400_user-hd-png-download.png").into(userImage);
+
+        }
+    }
 
 }
