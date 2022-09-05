@@ -135,6 +135,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="misSitios"
+            android:onClick="MiSitios"
             app:srcCompat="@drawable/ic_icons8_box"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -145,6 +146,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
+            android:onClick="Profile"
             app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -155,6 +157,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="addplace"
+            android:onClick="Agregar"
             app:srcCompat="@drawable/ic_icons8_plus"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>

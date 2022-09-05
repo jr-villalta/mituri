@@ -24,6 +24,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
             android:text="Genial! Comparte un nuevo lugar "
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -66,7 +67,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/color2"
-            android:onClick="CargarFoto"
             android:text="Agrega una Imagen"
             android:textColor="@color/black"
             app:icon="@android:drawable/ic_menu_gallery"
@@ -75,30 +75,52 @@
             app:iconTint="@color/black" />
 
         <LinearLayout
-            android:layout_width="290dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
 
-            <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPais"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:hint="Pais"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <Spinner
-                    android:id="@+id/SpCrearPais"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtRegion"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:gravity="start"
+                    android:hint="Region"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/SpCrearRegion"
-                    android:layout_width="290dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Tus Coordenadas"
+                android:text="Tu Ubicacion"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -135,7 +157,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnGuardar"
+            android:id="@+id/button3"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
