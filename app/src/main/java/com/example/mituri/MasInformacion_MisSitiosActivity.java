@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,6 +48,8 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
         IDBlog = getIntent().getStringExtra("IDBlog");
         Coordenadas = getIntent().getStringExtra("Coordenadas");
 
+        Log.d("Coordenadas",""+Coordenadas);
+
         Foto = getIntent().getStringExtra("Foto");
 
         Glide.with(getApplicationContext()).load(Foto).into(img);
@@ -56,6 +59,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String[] coordenada = Coordenadas.split("-");
                 Uri location = Uri.parse("geo:"+coordenada[0]+",-"+coordenada[1]+"?z=14"); // z param is zoom level
+                Log.d("Coordenadas",""+location);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 startActivity(mapIntent);
             }
