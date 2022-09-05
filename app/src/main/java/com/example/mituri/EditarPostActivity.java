@@ -17,7 +17,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mituri.Clases.SitioTuristico;
@@ -42,14 +49,12 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class AddPost extends AppCompatActivity {
+public class EditarPostActivity extends AppCompatActivity {
 
     public FirebaseStorage storage;
     public StorageReference Storareference;
@@ -63,11 +68,11 @@ public class AddPost extends AppCompatActivity {
 
     private Usuario usuario = new Usuario();
     public Uri UrlImage;
+    private ImageView Img;
     private String Pais;
     private String Region;
     private String Code;
-    private String NuevoID;
-    private boolean AuxiliarGuardar;
+    private String ID;
 
     private ServiceAPI ServicioPaises;
     private ServiceAPI ServicioRegiones;
@@ -77,25 +82,24 @@ public class AddPost extends AppCompatActivity {
     private ArrayList<String> ListaRegiones = new ArrayList<String>();
 
     private Button btnGPS, btnGuardar;
-    private String Foto = MainActivity.Foto_NuevoBlog;
-
+    private String Foto;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post);
+        setContentView(R.layout.activity_editar_post);
 
-        TxtNombre = findViewById(R.id.txtNombreLugar);
-        TxtDescripcion = findViewById(R.id.txtDescripcionr);
-        tvUbication = (TextView)findViewById(R.id.locationtv);
+        Img = findViewById(R.id.ImgEditar);
+        TxtNombre = findViewById(R.id.txtNombreLugarEditar);
+        TxtDescripcion = findViewById(R.id.txtDescripcionrEditar);
+        tvUbication = findViewById(R.id.locationtvEditar);
 
-        Sp_Pais = findViewById(R.id.SpCrearPais);
-        Sp_Region = findViewById(R.id.SpCrearRegion);
+        Sp_Pais = findViewById(R.id.SpCrearPaisEditar);
+        Sp_Region = findViewById(R.id.SpCrearRegionEditar);
 
         btnGPS = (Button)findViewById(R.id.gpsbtn);
         btnGuardar = findViewById(R.id.btnGuardar);
-
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -106,6 +110,16 @@ public class AddPost extends AppCompatActivity {
         Datareference = FirebaseDatabase.getInstance().getReference();
 
         Datareference.child(MainActivity.TBL_Usuarios).child(currentUser.getUid()).addValueEventListener(getUsuario);
+
+        ID = getIntent().getStringExtra("IDBlog");
+        TxtNombre.setText(getIntent().getStringExtra("Nombre"));
+        TxtDescripcion.setText(getIntent().getStringExtra("Descripcion"));
+        tvUbication.setText(getIntent().getStringExtra("Coordenadas"));
+        Pais = getIntent().getStringExtra("Pais");
+        Region = getIntent().getStringExtra("Region");
+        Foto = getIntent().getStringExtra("Foto");
+
+        Glide.with(getApplicationContext()).load(Foto).into(Img);
 
         CargarPaises();
         Permisos();
@@ -155,24 +169,25 @@ public class AddPost extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AuxiliarGuardar = true;
-
                 if (!TxtNombre.getText().toString().isEmpty() && !tvUbication.getText().toString().isEmpty() &&
                         !TxtDescripcion.getText().toString().isEmpty()) {
-
                     if (Pais != null && Region != null){
                         if (!tvUbication.getText().toString().equals("Tus Coordenadas")){
 
-                            Datareference.child(MainActivity.TBL_SitioTuristico).addValueEventListener(getSitios);
+                            if (UrlImage != null) {
+                                GuardarImagen();
+                            } else {
+                                Guardar();
+                            }
 
                         }else{
-                            Toast.makeText(AddPost.this, "Se debe colocar unas Coordenadas", Toast.LENGTH_LONG).show();
+                            Toast.makeText(EditarPostActivity.this, "Se debe colocar unas Coordenadas", Toast.LENGTH_LONG).show();
                         }
                     }else{
-                        Toast.makeText(AddPost.this, "Seleccione un Pais y una Region", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditarPostActivity.this, "Seleccione un Pais y una Region", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(AddPost.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EditarPostActivity.this, "Llene todos los campos", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -195,39 +210,6 @@ public class AddPost extends AppCompatActivity {
         }
     };
 
-    public ValueEventListener getSitios = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if(snapshot.exists()){
-                for (DataSnapshot items : snapshot.getChildren()) {
-                    SitioTuristico Sitio = items.getValue(SitioTuristico.class);
-
-                    assert Sitio != null;
-                    if (TxtNombre.getText().toString().equals(Sitio.getNombre())){
-                        Toast.makeText(AddPost.this, "Sitio ya existe", Toast.LENGTH_LONG).show();
-                        AuxiliarGuardar = false;
-                        break;
-                    }
-
-                }
-
-                if (AuxiliarGuardar){
-                    if (UrlImage != null) {
-                        GuardarImagen();
-                    } else {
-                        Guardar();
-                    }
-                }
-
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-
-        }
-    };
-
     public void CargarFoto(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/");
@@ -239,6 +221,8 @@ public class AddPost extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
             UrlImage = data.getData();
+
+            Glide.with(getApplicationContext()).load(UrlImage).into(Img);
         }
     }
 
@@ -262,7 +246,7 @@ public class AddPost extends AppCompatActivity {
                     }
 
                     //SE ASIGNAN LOS DATOS AL SPINNER DE PAISES
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(AddPost.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(EditarPostActivity.this,
                             android.R.layout.simple_dropdown_item_1line, ListaPaises);
                     Sp_Pais.setAdapter(adapter);
                 }
@@ -299,7 +283,7 @@ public class AddPost extends AppCompatActivity {
 
                     }
                     //SE ASIGNAN LOS DATOS AL SPINNER DE REGIONES
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(AddPost.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(EditarPostActivity.this,
                             android.R.layout.simple_dropdown_item_1line, ListaRegiones);
                     Sp_Region.setAdapter(adapter);
                 }
@@ -315,7 +299,7 @@ public class AddPost extends AppCompatActivity {
 
     public void Localizacion(){
 
-        LocationManager locationManager = (LocationManager) AddPost.this.
+        LocationManager locationManager = (LocationManager) EditarPostActivity.this.
                 getSystemService(Context.LOCATION_SERVICE);
 
         LocationListener locationListener = new LocationListener() {
@@ -330,7 +314,7 @@ public class AddPost extends AppCompatActivity {
             public void onProviderDisabled(String provider) {}
 
         };
-        int permisionCheck = ContextCompat.checkSelfPermission(AddPost.this,
+        int permisionCheck = ContextCompat.checkSelfPermission(EditarPostActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0,
                 0,locationListener);
@@ -383,10 +367,8 @@ public class AddPost extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference =database.getReference(MainActivity.TBL_SitioTuristico);
 
-        NuevoID = usuario.getIDUsuario()+TxtNombre.getText().toString();
-
         SitioTuristico Sitio = new SitioTuristico();
-        Sitio.setIDBlog(NuevoID);
+        Sitio.setIDBlog(ID);
         Sitio.setNombre(TxtNombre.getText().toString());
         Sitio.setPais(Pais);
         Sitio.setRegion(Region);
@@ -395,10 +377,10 @@ public class AddPost extends AppCompatActivity {
         Sitio.setFoto(Foto);
         Sitio.setUsuario(usuario);
 
-        reference.child(String.valueOf(NuevoID)).setValue(Sitio);
+        reference.child(String.valueOf(ID)).setValue(Sitio);
         Toast.makeText(this, "Se Agrego Correctamente", Toast.LENGTH_LONG).show();
 
-        startActivity(new Intent(AddPost.this, Home.class));
+        startActivity(new Intent(EditarPostActivity.this, MisSitiosActivity.class));
 
     }
 

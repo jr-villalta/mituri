@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -56,6 +57,7 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String[] coordenada = Coordenadas.split("-");
                 Uri location = Uri.parse("geo:"+coordenada[0]+",-"+coordenada[1]+"?z=14"); // z param is zoom level
+                Log.d("Coordenadas",""+location);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 startActivity(mapIntent);
             }
@@ -92,6 +94,17 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), EditarPostActivity.class);
+                intent.putExtra("Activity", "MasInformacion");
+                intent.putExtra("IDBlog", IDBlog);
+                intent.putExtra("Nombre", getIntent().getStringExtra("Nombre"));
+                intent.putExtra("Pais", getIntent().getStringExtra("Pais"));
+                intent.putExtra("Region", getIntent().getStringExtra("Region"));
+                intent.putExtra("Coordenadas", Coordenadas);
+                intent.putExtra("Descripcion", getIntent().getStringExtra("Descripcion"));
+                intent.putExtra("Foto", Foto);
+                startActivity(intent);
 
             }
         });

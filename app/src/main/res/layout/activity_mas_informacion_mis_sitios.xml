@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MasInformacion_MisSitiosActivity">
 
 
@@ -25,20 +26,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
-            android:textSize="24sp" />
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/TxtPaisMasInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/color4" />
 
         <TextView
             android:id="@+id/TxtRegionMasInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/color4" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,6 +61,8 @@
                 android:id="@+id/BtnMapaMasInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:drawableBottom="@android:drawable/ic_dialog_map"
                 android:text="Ver En Mapa" />
         </LinearLayout>
 
@@ -65,6 +72,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/color4"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -89,21 +98,21 @@
                 android:id="@+id/btnEliminar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1"
                 android:text="Eliminar"
-                android:layout_marginRight="5sp"
-                android:layout_marginLeft="5sp"
-                />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/BtnEditar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1"
                 android:text="Editar"
-                android:layout_marginRight="5sp"
-                android:layout_marginLeft="5sp"
-                />
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
     </LinearLayout>
 
@@ -126,9 +135,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="misSitios"
-            app:srcCompat="@drawable/ic_listamissitios"
-            tools:ignore="SpeakableTextPresentCheck"
-            />
+            app:srcCompat="@drawable/ic_icons8_box"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/porfilesettingsbtn"
@@ -137,7 +145,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
-            app:srcCompat="@drawable/ic_icons8_settings"
+            app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -148,8 +156,7 @@
             android:backgroundTint="@color/white"
             android:contentDescription="addplace"
             app:srcCompat="@drawable/ic_icons8_plus"
-            tools:ignore="SpeakableTextPresentCheck"
-            />
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
 

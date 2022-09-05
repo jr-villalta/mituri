@@ -8,10 +8,10 @@ import retrofit2.http.Path;
 
 public interface ServiceAPI {
 
-    @GET("all/?key=652369b7d842cf85d981a8076e10329e")
+    @GET("all/?key=8e07aa7a15864d27093aed6b174b977f")
     Call<List<ModPaises>> getDatos();
 
-    @GET("{CodePais}/all/?key=652369b7d842cf85d981a8076e10329e")
+    @GET("{CodePais}/all/?key=8e07aa7a15864d27093aed6b174b977f")
     Call<List<ModRegiones>> find(@Path("CodePais") String CodePais);
 
 }
