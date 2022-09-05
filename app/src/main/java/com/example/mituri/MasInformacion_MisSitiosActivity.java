@@ -48,8 +48,6 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
         IDBlog = getIntent().getStringExtra("IDBlog");
         Coordenadas = getIntent().getStringExtra("Coordenadas");
 
-        Log.d("Coordenadas",""+Coordenadas);
-
         Foto = getIntent().getStringExtra("Foto");
 
         Glide.with(getApplicationContext()).load(Foto).into(img);
@@ -96,6 +94,17 @@ public class MasInformacion_MisSitiosActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), EditarPostActivity.class);
+                intent.putExtra("Activity", "MasInformacion");
+                intent.putExtra("IDBlog", IDBlog);
+                intent.putExtra("Nombre", getIntent().getStringExtra("Nombre"));
+                intent.putExtra("Pais", getIntent().getStringExtra("Pais"));
+                intent.putExtra("Region", getIntent().getStringExtra("Region"));
+                intent.putExtra("Coordenadas", Coordenadas);
+                intent.putExtra("Descripcion", getIntent().getStringExtra("Descripcion"));
+                intent.putExtra("Foto", Foto);
+                startActivity(intent);
 
             }
         });
