@@ -105,6 +105,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:contentDescription="porfilesettings"
+            android:onClick="Profile"
             app:srcCompat="@drawable/ic_icons8_contacts"
             tools:ignore="SpeakableTextPresentCheck" />
 

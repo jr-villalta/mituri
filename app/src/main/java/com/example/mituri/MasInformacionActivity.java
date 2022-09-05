@@ -60,6 +60,7 @@ public class MasInformacionActivity extends AppCompatActivity {
         });
     }
 
-    public void Home(View view) { startActivity(new Intent(MasInformacionActivity.this, Home.class));}
-    public void AddPost(View view) { startActivity(new Intent(MasInformacionActivity.this, AddPost.class));}
+    public void Home(View view) { startActivity(new Intent(MasInformacionActivity.this, Home.class)); }
+    public void AddPost(View view) { startActivity(new Intent(MasInformacionActivity.this, AddPost.class)); }
+    public void Profile(View view) { startActivity(new Intent(MasInformacionActivity.this, ProfileActivity.class)); }
 }

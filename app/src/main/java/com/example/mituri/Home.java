@@ -202,7 +202,8 @@ public class Home extends AppCompatActivity {
         }
     };
 
-    public void Agregar(View view){startActivity(new Intent(Home.this, AddPost.class));}
-    public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class));}
+    public void Agregar(View view){ startActivity(new Intent(Home.this, AddPost.class)); }
+    public void MiSitios(View view) { startActivity(new Intent(Home.this, MisSitiosActivity.class)); }
+    public void Profile(View view) { startActivity(new Intent(Home.this, ProfileActivity.class)); }
 
 }
