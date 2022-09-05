@@ -77,9 +77,12 @@ public class MasInformacionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 float valorMedio = 0;
+                int contador = 0;
                 for (DataSnapshot child : snapshot.getChildren()) {
                     valorMedio += Float.parseFloat(child.getValue().toString());
+                    contador++;
                 }
+                valorMedio /= contador;
                 ratingBar.setRating(valorMedio);
                 TxtMediaEstrellas.setText("["+valorMedio+"]");
             }
