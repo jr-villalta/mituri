@@ -76,13 +76,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnBuscar"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/color2"
                 android:clickable="true"
                 android:onClick="Buscar"
+                app:fabSize="mini"
                 app:srcCompat="@android:drawable/ic_menu_search" />
 
         </LinearLayout>
@@ -123,6 +123,7 @@
                 android:backgroundTint="@color/color2"
                 android:clickable="true"
                 android:onClick="LimpiarFiltro"
+                app:fabSize="auto"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
         </LinearLayout>
 

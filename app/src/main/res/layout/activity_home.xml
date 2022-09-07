@@ -78,13 +78,15 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnBuscar"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/color2"
                 android:clickable="true"
+                android:foregroundGravity="center"
                 android:onClick="Buscar"
+                app:fabSize="mini"
                 app:srcCompat="@android:drawable/ic_menu_search" />
 
         </LinearLayout>
@@ -118,13 +120,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnLimpiar"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/color2"
                 android:clickable="true"
                 android:onClick="LimpiarFiltro"
+                app:fabSize="normal"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
         </LinearLayout>
 
