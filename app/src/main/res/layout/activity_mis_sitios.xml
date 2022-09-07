@@ -76,6 +76,7 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnBuscar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
@@ -89,7 +90,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
@@ -105,25 +106,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#000000"
+                    android:gravity="center"
                     android:textColor="@color/black" />
 
                 <Spinner
                     android:id="@+id/SpBuscarRegion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#000000" />
+                    android:backgroundTint="#000000"
+                    android:gravity="center" />
             </LinearLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnLimpiar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/color2"
                 android:clickable="true"
                 android:onClick="LimpiarFiltro"
-                app:fabSize="auto"
+                app:fabSize="mini"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
         </LinearLayout>
 
